@@ -4,6 +4,6 @@ class GodsController < ApplicationController
   end
 
   def new
-
+    
   end
 end

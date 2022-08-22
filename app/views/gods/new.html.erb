@@ -1,0 +1,15 @@
+<h1>Recognize a God</h1>
+
+<form action="/gods" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Name this God:</p>
+  <input type='text' name='god[:name]'><br>
+  <p>How old is this being?</p>
+  <input type='integer' name='god[:age]'><br>
+  <p>Does your God suffer the frailty of mortality, or the curse of eternal life?</p>
+  <input type='radio' id='false' name='god[:immortal]' value="false">
+  <label for='false'>Mortal</label><br>
+  <input type='radio' id='true' name='god[:immortal]' value="true">
+  <label for='true'>Immortal</label><br><br>
+  <input type='submit'>
+</form>

@@ -1,0 +1,23 @@
+<h1>Spawn a New Monster</h1>
+
+<form action="/monster" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Name the summoned monster</p>
+  <input type='text' name='monster[:name]'><br>
+  <p>How old is this creature?</p>
+  <input type='integer' name='monster[:age]'><br>
+  <label for='strength_rank'>Strength (between 0 (weak) and 10 (legendary)):</label>
+  <input type='range' id='strength_rank' name='monster[:strength_rank]' min='0' max='10' step='0.5'>
+  <p>Does your monster possess the gift of flight?</p>
+  <input type='radio' id='false' name='monster[:flying]' value="false">
+  <label for='false'>It soars in the sky</label><br>
+  <input type='radio' id='true' name='monster[:flying]' value="true">
+  <label for='true'>It scrabbles in the dirt</label><br><br>
+  <label for='god[:id]'>To which deity does this beast pledge its loyalty?</label><br>
+  <select name='god[:id]' id='god[:id]'>
+    <option value='god_1'>God 1</option>
+    <option value='god_2'>God 2</option>
+    <option value='god_3'>God 3</option>
+  </select><br><br>
+  <input type='submit'>
+</form>
