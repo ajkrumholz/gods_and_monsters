@@ -1,0 +1,11 @@
+<a href="/gods">Gods Index</a>
+
+<h1><%= @god.name %></h1>
+<h3><%= "#{@god.age} million years old" %></h3>
+<h3>
+  <% if @god.immortal = "false" %>
+    <%= "Immortal" %>
+  <% else %>
+    <%= "Mortal" %>
+  <% end %>
+</h3>

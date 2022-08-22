@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   get '/gods/new', to: 'gods#new'
   get '/monsters', to: 'monsters#index'
   get '/monsters/new', to: 'monsters#new'
+  post '/gods', to: 'gods#create'
+  post '/monsters', to: 'monsters#create'
+  get '/gods/:id', to: 'gods#show'
 end

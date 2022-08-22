@@ -1,5 +1,11 @@
 <h1>All Gods</h1>
 
 <% @gods.each do |god| %>
-  <h3><%= god %></h3>
+  <% if god.immortal = "true"%>
+    <% status = "immortal" %>
+  <% else %>
+    <% status = "mortal" %>
+  <% end %>
+  <h3><a href='/gods/<%= god.id %>'><%= god.name %></a></h3>
+  <p><%= "#{god.age} million years old and #{status}." %></p>
 <% end %>
