@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_22_221141) do
+ActiveRecord::Schema.define(version: 2022_08_22_225924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2022_08_22_221141) do
     t.string "name"
     t.integer "age"
     t.boolean "immortal"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

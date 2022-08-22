@@ -1,11 +1,12 @@
-<h1>Recognize a God</h1>
+<h1> Make changes to your God</h1>
 
-<form action="/gods" method="post">
+<form action="/gods/<%= @god.id %>" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="PATCH">
   <p>Name this God:</p>
-  <input type='text' name='god[name]'><br>
+  <input type='text' name='god[name]' value='<%= @god.name %>'><br>
   <p>How old is this being? (millions of years)</p>
-  <input type='integer' name='god[age]'><br>
+  <input type='integer' name='god[age]' value='<%= @god.name %>'><br>
   <p>Does your God suffer the frailty of mortality, or the curse of eternal life?</p>
   <input type='radio' id='mortal' name='god[immortal]' value='0'>
   <label for='false'>Mortal</label><br>

@@ -8,4 +8,8 @@ Rails.application.routes.draw do
   post '/gods', to: 'gods#create'
   post '/monsters', to: 'monsters#create'
   get '/gods/:id', to: 'gods#show'
+  get '/gods/:id/edit', to: 'gods#edit'
+  patch '/gods/:id', to: 'gods#update'
+  delete '/gods/:id', to: 'gods#destroy'
 end
+

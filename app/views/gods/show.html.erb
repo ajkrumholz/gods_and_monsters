@@ -2,10 +2,5 @@
 
 <h1><%= @god.name %></h1>
 <h3><%= "#{@god.age} million years old" %></h3>
-<h3>
-  <% if @god.immortal = "false" %>
-    <%= "Immortal" %>
-  <% else %>
-    <%= "Mortal" %>
-  <% end %>
-</h3>
+<h3><%= "Immortal: #{@god.immortal}" %></h3>
+<a href='/gods/<%= @god.id %>/edit'>Edit</a>
