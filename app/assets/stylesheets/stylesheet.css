@@ -1,0 +1,35 @@
+ul.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li.nav {
+  float: left;
+  border-right: 1px solid #bbb;
+}
+
+li a.nav {
+  display: block;
+  color: white;
+  padding: 8px;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 24px;
+}
+
+li a.nav:hover {
+  background-color: #111;
+}
+
+.nav.active {
+  background-color: #1115;
+}
+
+body {
+  background-color: #555;
+  color: whitesmoke;
+}

@@ -1,3 +1,19 @@
+<head>
+
+  <%= stylesheet_link_tag "stylesheet" %>
+
+</head>
+
+<body>
+
+ <div>
+    <ul class="nav">
+      <li class="nav"><a class="nav" href="/">Home</a></li>
+      <li class="nav"><a class="nav active" href="/gods/">Gods</a></li>
+      <li class="nav"><a class="nav" href="/monsters/">Monsters</a></li>
+    </ul>
+  </div>
+
 <h1>All Gods</h1>
 
 <% @gods.each do |god| %>
@@ -9,3 +25,13 @@
     <input type="submit" value="delete"/>
   </form>
 <% end %>
+
+</body>
+
+
+
+
+
+
+
+

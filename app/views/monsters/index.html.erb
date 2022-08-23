@@ -1,5 +1,22 @@
+<head>
+
+  <%= stylesheet_link_tag "stylesheet" %>
+  
+</head>
+
+<body>
+
+  <div>
+    <ul class="nav">
+      <li class="nav"><a class="nav" href="/">Home</a></li>
+      <li class="nav"><a class="nav" href="/gods/">Gods</a></li>
+      <li class="nav"><a class="nav active" href="/monsters/">Monsters</a></li>
+    </ul>
+  </div>
+
 <h1>All Monsters</h1>
 
 <% @monsters.each do |monster| %>
   <h3><%= monster %></h3>
 <% end %>
+</body>
