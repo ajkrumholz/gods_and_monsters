@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe 'God Index Page' do
 
   it 'displays the name of a God' do
-    # require 'pry'; binding.pry
     khorne = God.create(name: "Khorne", age: 20, immortal: false)
     visit "/gods"
 
