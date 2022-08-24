@@ -1,0 +1,26 @@
+<head>
+
+  <%= stylesheet_link_tag "stylesheet" %>
+
+</head>
+
+<body>
+
+  <div>
+    <ul class="nav">
+      <li class="nav"><a class="nav" href="/">Home</a></li>
+      <li class="nav"><a class="nav active" href="/gods/">Gods</a></li>
+      <li class="nav"><a class="nav" href="/monsters/">Monsters</a></li>
+    </ul>
+  </div>
+
+<h1>Monster Info</h1>
+
+<h2>Name: <%= @monster.name %></h2>
+<h3>God: <%= @monster.god.name %></h3>
+<h4>Strength Rank: <%= @monster.strength_rank %></h4>
+<h4>Flying: <%= @monster.flying %></h4>
+<p>Created: <%= @monster.created_at %></p>
+<p>Updated: <%= @monster.updated_at %></p>
+
+</body>

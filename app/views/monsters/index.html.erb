@@ -17,6 +17,6 @@
 <h1>All Monsters</h1>
 
 <% @monsters.each do |monster| %>
-  <h3><%= monster %></h3>
+  <h2><a href="/monsters/<%= monster.id %>"><%= monster.name %></a></h2>
 <% end %>
 </body>
