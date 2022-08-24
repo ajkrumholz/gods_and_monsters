@@ -1,9 +1,7 @@
 class GodsController < ApplicationController
   def index
     @gods = God.all
-    # require 'pry'; binding.pry
   end
-
   
   def new
     
@@ -15,7 +13,6 @@ class GodsController < ApplicationController
         name: params[:god][:name],
         age: params[:god][:age],
         immortal: params[:god][:immortal],
-        created_at: Date.today
       }
     )
     god.save
@@ -48,5 +45,4 @@ class GodsController < ApplicationController
     God.destroy(params[:id])
     redirect_to '/gods'
   end
-
 end
