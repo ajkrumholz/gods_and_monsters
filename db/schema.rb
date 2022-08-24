@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_22_225924) do
+ActiveRecord::Schema.define(version: 2022_08_24_145638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,4 +23,15 @@ ActiveRecord::Schema.define(version: 2022_08_22_225924) do
     t.datetime "updated_at"
   end
 
+  create_table "monsters", force: :cascade do |t|
+    t.string "name"
+    t.float "strength_rank"
+    t.boolean "flying"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "gods_id"
+    t.index ["gods_id"], name: "index_monsters_on_gods_id"
+  end
+
+  add_foreign_key "monsters", "gods", column: "gods_id"
 end
