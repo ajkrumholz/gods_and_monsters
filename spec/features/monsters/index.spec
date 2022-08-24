@@ -13,7 +13,6 @@ RSpec.describe 'Monster Index Page' do
     daemon_priestess = slaanesh.monsters.create!(name: "Daemon Priestess", strength_rank: 9.0, flying: true)
 
     visit '/monsters/'
-    save_and_open_page
 
     expect(page).to have_content(bloodthirster.name)
     expect(page).to have_content(hellhound.name)
