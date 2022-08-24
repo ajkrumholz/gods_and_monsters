@@ -1,0 +1,25 @@
+<head>
+
+  <%= stylesheet_link_tag "stylesheet" %>
+
+</head>
+
+<body>
+
+  <div>
+    <ul class="nav">
+      <li class="nav"><a class="nav" href="/">Home</a></li>
+      <li class="nav"><a class="nav active" href="/gods/">Gods</a></li>
+      <li class="nav"><a class="nav" href="/monsters/">Monsters</a></li>
+    </ul>
+  </div>
+
+  <h1 style="text-align: center; padding: 30px"><%= @god.name %>'s Menagerie</h1>
+
+  <% @menagerie.each do |monster| %>
+    <h2><%= monster.name %></h2>
+    <h3>Strength Rank: <%= monster.strength_rank %></h3>
+    <h3>Flying: <%= monster.flying %></h3>
+    <p>Created At: <%= monster.created_at %></p>
+    <p>Updated At: <%= monster.updated_at %></p>
+  <% end %>

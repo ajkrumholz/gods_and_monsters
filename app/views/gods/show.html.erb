@@ -17,6 +17,7 @@
   <h1 class="god"><%= @god.name %></h1>
   <h3 style=><%= "#{@god.age} million years old" %></h3>
   <h3><%= "Immortal: #{@god.immortal}" %></h3>
+  <h2><a href="/gods/<%= @god.id %>/menagerie">View the Menagerie</a></h2>
   <%= "Created #{@god.created_at}" %>
   <%= "Last updated #{@god.updated_at}" %>
   <a href='/gods/<%= @god.id %>/edit'>Edit</a>
