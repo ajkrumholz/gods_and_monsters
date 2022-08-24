@@ -6,7 +6,7 @@
 
 <body>
 
- <div>
+  <div>
     <ul class="nav">
       <li class="nav"><a class="nav" href="/">Home</a></li>
       <li class="nav"><a class="nav active" href="/gods/">Gods</a></li>
@@ -14,17 +14,21 @@
     </ul>
   </div>
 
-<h1>All Gods</h1>
-
-<% @gods.each do |god| %>
-  <h3><a href='/gods/<%= god.id %>'><%= god.name %></a></h3>
-  <a href="/gods/<%= god.id  %>/edit">Edit</a><br><br>
-  <form action="/gods/<%= god.id %>" method="POST">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="delete"/>
-  </form>
-<% end %>
+  <h1 style="text-align: center; padding: 30px">All Gods</h1>
+  <h2><a href='/gods/new/'>Recognize a new God</a></h2>
+  <ul>
+    <% @gods.each do |god| %>
+      <li class="god">
+        <a class="god" href='/gods/<%= god.id %>'><%= god.name %></a>
+        <%# <a href="/gods/<%= god.id /edit">Edit</a><br><br> %>
+        <form action="/gods/<%= god.id %>" method="POST">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <%# <input type="submit" value="delete"/> %>
+        </form>
+      </li>
+    <% end %>
+  </ul>
 
 </body>
 

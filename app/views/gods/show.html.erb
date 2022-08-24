@@ -1,6 +1,24 @@
-<a href="/gods">Gods Index</a>
+<head>
 
-<h1><%= @god.name %></h1>
-<h3><%= "#{@god.age} million years old" %></h3>
-<h3><%= "Immortal: #{@god.immortal}" %></h3>
-<a href='/gods/<%= @god.id %>/edit'>Edit</a>
+  <%= stylesheet_link_tag "stylesheet" %>
+
+</head>
+
+<body>
+
+  <div>
+    <ul class="nav">
+      <li class="nav"><a class="nav" href="/">Home</a></li>
+      <li class="nav"><a class="nav active" href="/gods/">Gods</a></li>
+      <li class="nav"><a class="nav" href="/monsters/">Monsters</a></li>
+    </ul>
+  </div>
+
+  <h1 class="god"><%= @god.name %></h1>
+  <h3 style=><%= "#{@god.age} million years old" %></h3>
+  <h3><%= "Immortal: #{@god.immortal}" %></h3>
+  <%= "Created #{@god.created_at}" %>
+  <%= "Last updated #{@god.updated_at}" %>
+  <a href='/gods/<%= @god.id %>/edit'>Edit</a>
+
+</body>

@@ -33,3 +33,44 @@ body {
   background-color: #555;
   color: whitesmoke;
 }
+
+a:link {
+  color: whitesmoke;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: lightgray;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: gray;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:active {
+  color: darkgray;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a.god {
+  font-size: 30px;
+  padding: 10px;
+}
+
+li.god {
+  list-style-type: none;
+  margin: 0;
+  padding: 30px;
+  overflow: hidden;
+}
+
+h1.god {
+  font-size: 60px;
+  text-align: center;
+}
