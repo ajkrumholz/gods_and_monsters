@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Monster Index Page' do
-  it 'displays the name of all monster' do
+  it 'displays the name of all monsters' do
     khorne = God.create(name: "Khorne", age: 20, immortal: false)
     ursun = God.create(name: "Ursun", age: 20, immortal: false)
     slaanesh = God.create(name: "Slaanesh", age: 15, immortal: true)
