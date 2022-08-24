@@ -1,6 +1,6 @@
 class GodsController < ApplicationController
   def index
-    @gods = God.all
+    @gods = God.all.order(created_at: :desc)
   end
   
   def new
@@ -47,7 +47,6 @@ class GodsController < ApplicationController
   end
 
   def menagerie
-    @god = God.find(params[:id])
-    @menagerie = @god.monsters
+    @menagerie = God.find(params[:id]).monsters
   end
 end
