@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/', to: 'home#index'
   get '/gods', to: 'gods#index'
   get '/monsters', to: 'monsters#index'
+  get '/gods/:id/menagerie', to: 'gods#menagerie'
   
   get '/gods/new', to: 'gods#new'
   get '/monsters/new', to: 'monsters#new'
