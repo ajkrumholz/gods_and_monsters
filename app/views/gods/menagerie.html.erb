@@ -16,7 +16,7 @@
 
   <h1 style="text-align: center; padding: 30px"><%= @god.name %>'s Menagerie</h1>
 
-  <% @menagerie.each do |monster| %>
+  <% @god.monsters.each do |monster| %>
     <h2><%= monster.name %></h2>
     <h3>Strength Rank: <%= monster.strength_rank %></h3>
     <h3>Flying: <%= monster.flying %></h3>
