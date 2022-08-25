@@ -8,15 +8,19 @@ class GodsController < ApplicationController
   end
   
   def create
-    god = God.new(
+    @god = God.new(
       {
         name: params[:name],
         age: params[:age],
         immortal: params[:immortal]
       }
     )
-    god.save
-    redirect_to '/gods'
+    @god.save
+    if @god.save
+      redirect_to '/gods'
+    else
+      @errors = @god.errors.messages
+    end
   end
   
   def show

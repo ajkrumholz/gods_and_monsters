@@ -15,17 +15,16 @@
 
   <h1>Recognize a new God</h1>
 
-  <%= form_with url: "/gods", method: :post do |form| %>
-    <%= form.label :name, "Name this God" %><br><br>
-    <%= form.text_field :name %><br><br>
-    <%= form.label :age, "How old is this being? (mil. of years)"%><br><br>
-    <%= form.number_field :age %><br><br>
+  <%= form_with url: "/gods", method: :post do |f| %>
+    <%= f.label :name, "Name this God" %><br><br>
+    <%= f.text_field :name, required: true %><br><br>
+    <%= f.label :age, "How old is this being? (mil. of years)"%><br><br>
+    <%= f.number_field :age, required: true %><br><br>
     <p>Does your God suffer the frailty of mortality, or the curse of eternal life?</p>
-    <%= form.radio_button :immortal, "true" %>
-    <%= form.label :immortal_true, "Immortal" %>
-    <%= form.radio_button :immortal, "false" %>
-    <%= form.label :immortal_false, "Mortal" %><br><br>
-    <%= form.submit "Create God" %>
+    <%= f.radio_button :immortal, "true" %>
+    <%= f.label :immortal_true, "Immortal" %>
+    <%= f.radio_button :immortal, "false" %>
+    <%= f.label :immortal_false, "Mortal" %><br><br>
+    <%= f.submit "Create God" %>
   <% end %>
-  
 </body>

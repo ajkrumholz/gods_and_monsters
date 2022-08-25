@@ -12,9 +12,10 @@ RSpec.describe 'gods#new' do
   it 'has a form to define the attributes of the new god' do
     visit "/gods/new/"
 
-    expect(page).to have_field("god[name]")
-    expect(page).to have_field("god[age]")
-    expect(page).to have_field("god[immortal]")
+    expect(page).to have_field(:name)
+    expect(page).to have_field(:age)
+    expect(page).to have_field(:immortal_true)
+    expect(page).to have_field(:immortal_false)
   end
 
   it 'creates a new god using the form' do
@@ -24,7 +25,6 @@ RSpec.describe 'gods#new' do
     fill_in(:age, with: '14')
     choose(:immortal_true)
     click_on("Create God")
-
     @god = God.order("created_at").last
 
     expect(@god.name).to eq('Tzeentch')
@@ -36,9 +36,9 @@ RSpec.describe 'gods#new' do
   it 'cannot create a god without name' do
     visit "/gods/new/"
 
-    fill_in('god[age]', with: '14')
-    choose('immortal')
-    click_on('submit')
+    fill_in(:age, with: '14')
+    choose(:immortal_true)
+    click_on("Create God")
 
     expect(page).to have_current_path("/gods/new")
   end
@@ -46,9 +46,9 @@ RSpec.describe 'gods#new' do
   xit 'cannot create a god without age' do
     visit "/gods/new/"
 
-    fill_in('god[name]', with: 'Tzeentch')
-    choose('immortal')
-    click_on('submit')
+    fill_in(:name, with: 'Tzeentch')
+    choose(:immortal_true)
+    click_on("Create God")
     
     expect
   end
@@ -58,7 +58,7 @@ RSpec.describe 'gods#new' do
 
     fill_in(:name, with: 'Tzeentch')
     fill_in(:age, with: '14')
-    click_on('submit')
+    click_on("Create God")
     
     expect
   end
@@ -66,10 +66,10 @@ RSpec.describe 'gods#new' do
   it 'redirects to gods#index after creating' do
     visit "/gods/new/"
 
-    fill_in('god[name]', with: 'Tzeentch')
-    fill_in('god[age]', with: '14')
-    choose('immortal')
-    click_on('submit')
+    fill_in(:name, with: 'Tzeentch')
+    fill_in(:age, with: '14')
+    choose(:immortal_true)
+    click_on("Create God")
 
     expect(page).to have_current_path("/gods")
   end
