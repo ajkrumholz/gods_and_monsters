@@ -15,7 +15,6 @@ RSpec.describe 'God Index Page' do
     slaanesh = God.create(name: "Slaanesh", age: 15, immortal: true)
 
     visit "/gods"
-    save_and_open_page
 
     expect(page).to have_content(khorne.name)
     expect(page).to have_content(ursun.name)
@@ -28,7 +27,6 @@ RSpec.describe 'God Index Page' do
     slaanesh = God.create(name: "Slaanesh", age: 15, immortal: true)
 
     visit "/gods"
-    save_and_open_page
 
     expect(page.body).to match(/#{slaanesh.name}.*#{ursun.name}.*#{khorne.name}/m)
   end
