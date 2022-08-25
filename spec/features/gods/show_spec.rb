@@ -32,4 +32,12 @@ RSpec.describe "Gods#Show" do
     expect(page).to have_link("Gods", :href => "/gods/")
     expect(page).to have_link("Monsters", :href => "/monsters/")
   end
+
+  it 'links to the gods menagerie' do
+    khorne = God.create(name: "Khorne", age: 20, immortal: false)
+
+    visit "/gods/#{khorne.id}/"
+
+    expect(page).to have_link("View the Menagerie", :href => "/gods/#{khorne.id}/menagerie")
+  end
 end
