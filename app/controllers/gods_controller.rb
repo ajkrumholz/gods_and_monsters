@@ -16,9 +16,10 @@ class GodsController < ApplicationController
       }
     )
     @god.save
-    if @god.save
+    if @god.save == true
       redirect_to '/gods'
     else
+      redirect_to '/gods/new'
       @errors = @god.errors.messages
     end
   end

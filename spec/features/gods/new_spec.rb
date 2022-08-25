@@ -25,7 +25,7 @@ RSpec.describe 'gods#new' do
     fill_in(:age, with: '14')
     choose(:immortal_true)
     click_on("Create God")
-    @god = God.order("created_at").last
+    @god = God.last
 
     expect(@god.name).to eq('Tzeentch')
     expect(@god.age).to eq(14)
@@ -39,28 +39,27 @@ RSpec.describe 'gods#new' do
     fill_in(:age, with: '14')
     choose(:immortal_true)
     click_on("Create God")
-
     expect(page).to have_current_path("/gods/new")
   end
 
-  xit 'cannot create a god without age' do
+  it 'cannot create a god without age' do
     visit "/gods/new/"
 
     fill_in(:name, with: 'Tzeentch')
     choose(:immortal_true)
     click_on("Create God")
     
-    expect
+    expect(page).to have_current_path("/gods/new")
   end
 
-  xit 'cannot create a god without immortal value' do
+  it 'cannot create a god without immortal value' do
     visit "/gods/new/"
 
     fill_in(:name, with: 'Tzeentch')
     fill_in(:age, with: '14')
     click_on("Create God")
     
-    expect
+    expect(page).to have_current_path("/gods/new")
   end
 
   it 'redirects to gods#index after creating' do
@@ -73,16 +72,4 @@ RSpec.describe 'gods#new' do
 
     expect(page).to have_current_path("/gods")
   end
-
-  # As a visitor
-  # When I visit the Parent Index page
-  # Then I see a link to create a new Parent record, "New Parent"
-  # When I click this link
-  # Then I am taken to '/parents/new' where I  see a form for a new parent record
-  # When I fill out the form with a new parent's attributes:
-  # And I click the button "Create Parent" to submit the form
-  # Then a `POST` request is sent to the '/parents' route,
-  # a new parent record is created,
-  # and I am redirected to the Parent Index page where I see the new Parent displayed.
-
 end

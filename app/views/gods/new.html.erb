@@ -14,17 +14,43 @@
   </div>
 
   <h1>Recognize a new God</h1>
-
   <%= form_with url: "/gods", method: :post do |f| %>
-    <%= f.label :name, "Name this God" %><br><br>
-    <%= f.text_field :name, required: true %><br><br>
-    <%= f.label :age, "How old is this being? (mil. of years)"%><br><br>
-    <%= f.number_field :age, required: true %><br><br>
-    <p>Does your God suffer the frailty of mortality, or the curse of eternal life?</p>
-    <%= f.radio_button :immortal, "true" %>
-    <%= f.label :immortal_true, "Immortal" %>
-    <%= f.radio_button :immortal, "false" %>
-    <%= f.label :immortal_false, "Mortal" %><br><br>
-    <%= f.submit "Create God" %>
+    <div>
+      <%= f.label :name, "Name this God" %><br><br>
+      <%= f.text_field :name, required: true %><br><br>
+      <%# <% invalid = @god.errors.include?(:name) %>
+      <%# <% if invalid %>
+        <%# <div> %>
+          <%# <% god.errors.full_messages_for(:name).each do |msg| %>
+            <%# <%= msg %>
+          <%# <% end %>
+        <%# </div> %>
+      <%# <% end %>
+    </div>
+
+    <div>
+      <%= f.label :age, "How old is this being? (mil. of years)"%><br><br>
+      <%= f.number_field :age, required: true %><br><br>
+    </div>
+
+    <div>
+      <p>Does your God suffer the frailty of mortality, or the curse of eternal life?</p>
+      <%= f.radio_button :immortal, "true" %>
+      <%= f.label :immortal_true, "Immortal" %>
+      <%= f.radio_button :immortal, "false" %>
+      <%= f.label :immortal_false, "Mortal" %><br><br>
+    </div>
+    
+    <div>
+      <%= f.submit "Create God" %>
+    </div>
+
+    <% if !@errors.nil? %>
+      <% @errors.each do |error| %>
+        <%= error %>
+      <% end %>
+    <% end %>
+
   <% end %>
+
 </body>
