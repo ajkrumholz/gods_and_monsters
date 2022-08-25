@@ -19,7 +19,8 @@
   <ul>
     <% @gods.each do |god| %>
       <li class="god">
-        <a class="god" href='/gods/<%= god.id %>'><%= god.name %></a>
+        <h1><%= god.name %></h1>
+        <p><a href='/gods/<%= god.id %>'>Link</a></p>
         <%# <a href="/gods/<%= god.id /edit">Edit</a><br><br> %>
         <form action="/gods/<%= god.id %>" method="POST">
           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">

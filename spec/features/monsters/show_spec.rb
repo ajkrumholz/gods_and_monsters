@@ -12,7 +12,6 @@ RSpec.describe "Monsters Show Page" do
 
     visit "/monsters/#{bloodthirster.id}"
 
-    save_and_open_page
     expect(page).to have_content(bloodthirster.name)
     expect(page).to have_content(bloodthirster.strength_rank)
     expect(page).to have_content(bloodthirster.flying)
