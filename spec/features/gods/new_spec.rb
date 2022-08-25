@@ -20,24 +20,44 @@ RSpec.describe 'gods#new' do
   it 'creates a new god using the form' do
     visit "/gods/new/"
 
-    fill_in('god[name]', with: 'Tzeentch')
-    fill_in('god[age]', with: '14')
-    choose('immortal')
-    click_on('submit')
+    fill_in(:name, with: 'Tzeentch')
+    fill_in(:age, with: '14')
+    choose(:immortal_true)
+    click_on("Create God")
 
     @god = God.order("created_at").last
 
     expect(@god.name).to eq('Tzeentch')
     expect(@god.age).to eq(14)
     expect(@god.immortal).to eq(true)
+    expect(page).to have_current_path("/gods")
   end
 
-  xit 'cannot create a god without' do
+  it 'cannot create a god without name' do
+    visit "/gods/new/"
+
+    fill_in('god[age]', with: '14')
+    choose('immortal')
+    click_on('submit')
+
+    expect(page).to have_current_path("/gods/new")
+  end
+
+  xit 'cannot create a god without age' do
     visit "/gods/new/"
 
     fill_in('god[name]', with: 'Tzeentch')
-    fill_in('god[age]', with: '14')
     choose('immortal')
+    click_on('submit')
+    
+    expect
+  end
+
+  xit 'cannot create a god without immortal value' do
+    visit "/gods/new/"
+
+    fill_in(:name, with: 'Tzeentch')
+    fill_in(:age, with: '14')
     click_on('submit')
     
     expect

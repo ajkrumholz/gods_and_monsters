@@ -10,9 +10,9 @@ class GodsController < ApplicationController
   def create
     god = God.new(
       {
-        name: params[:god][:name],
-        age: params[:god][:age],
-        immortal: params[:god][:immortal],
+        name: params[:name],
+        age: params[:age],
+        immortal: params[:immortal]
       }
     )
     god.save

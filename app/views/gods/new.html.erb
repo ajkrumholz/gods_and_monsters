@@ -15,18 +15,17 @@
 
   <h1>Recognize a new God</h1>
 
-  <form id='new_god' action="/gods" method="post">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <p>Name this God:</p>
-    <input type='text' name='god[name]'><br>
-    <p>How old is this being? (millions of years)</p>
-    <input type='integer' name='god[age]'><br>
+  <%= form_with url: "/gods", method: :post do |form| %>
+    <%= form.label :name, "Name this God" %><br><br>
+    <%= form.text_field :name %><br><br>
+    <%= form.label :age, "How old is this being? (mil. of years)"%><br><br>
+    <%= form.number_field :age %><br><br>
     <p>Does your God suffer the frailty of mortality, or the curse of eternal life?</p>
-    <input type='radio' id='mortal' name='god[immortal]' value='0'>
-    <label for='false'>Mortal</label><br>
-    <input type='radio' id='immortal' name='god[immortal]' value='1'>
-    <label for='true'>Immortal</label><br><br>
-    <input id = 'submit' type='submit'>
-  </form>
-
+    <%= form.radio_button :immortal, "true" %>
+    <%= form.label :immortal_true, "Immortal" %>
+    <%= form.radio_button :immortal, "false" %>
+    <%= form.label :immortal_false, "Mortal" %><br><br>
+    <%= form.submit "Create God" %>
+  <% end %>
+  
 </body>
