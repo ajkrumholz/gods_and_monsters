@@ -31,4 +31,12 @@ RSpec.describe 'God Index Page' do
     expect(page.body).to match(/#{slaanesh.name}.*#{ursun.name}.*#{khorne.name}/m)
   end
 
+  it 'links to home, gods, and monsters' do
+    visit "/gods"
+
+    expect(page).to have_link("Home", :href => "/")
+    expect(page).to have_link("Gods", :href => "/gods/")
+    expect(page).to have_link("Monsters", :href => "/monsters/")
+  end
+
 end
