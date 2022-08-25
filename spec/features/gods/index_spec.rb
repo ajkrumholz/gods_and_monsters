@@ -39,4 +39,9 @@ RSpec.describe 'God Index Page' do
     expect(page).to have_link("Monsters", :href => "/monsters/")
   end
 
+  it 'links to a page allowing the creation of new parents' do
+    visit "/gods"
+
+    expect(page).to have_link("Recognize a new God", :href => "/gods/new/")
+  end  
 end
