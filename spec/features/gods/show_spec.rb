@@ -21,12 +21,23 @@ RSpec.describe "Gods#Show" do
     visit "/gods/#{khorne.id}"
 
     expect(page).to have_content(khorne.monsters.count)
-    # ursun = God.create!(name: "Ursun", age: 20, immortal: false)
-    # elemental_bear = ursun.monsters.create!(name: "Elemental Bear", strength_rank: 7.0, flying: false)
-    
-    # slaanesh = God.create!(name: "Slaanesh", age: 15, immortal: true)
-    # daemonette = slaanesh.monsters.create!(name: "Daemonette", strength_rank: 3.5, flying: false)
-    # daemon_priestess = slaanesh.monsters.create!(name: "Daemon Priestess", strength_rank: 9.0, flying: true)
-    # expect(page)
+  end
+
+  it 'links to home, gods, and monsters' do
+    khorne = God.create(name: "Khorne", age: 20, immortal: false)
+
+    visit "/gods/#{khorne.id}/"
+
+    expect(page).to have_link("Home", :href => "/")
+    expect(page).to have_link("Gods", :href => "/gods/")
+    expect(page).to have_link("Monsters", :href => "/monsters/")
+  end
+
+  it 'links to the gods menagerie' do
+    khorne = God.create(name: "Khorne", age: 20, immortal: false)
+
+    visit "/gods/#{khorne.id}/"
+
+    expect(page).to have_link("View the Menagerie", :href => "/gods/#{khorne.id}/menagerie")
   end
 end

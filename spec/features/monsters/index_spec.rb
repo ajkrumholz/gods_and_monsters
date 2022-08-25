@@ -20,4 +20,12 @@ RSpec.describe 'Monster Index Page' do
     expect(page).to have_content(daemonette.name)
     expect(page).to have_content(daemon_priestess.name)
   end
+
+  it 'links to home, gods, and monsters' do
+    visit "/monsters/"
+
+    expect(page).to have_link("Home", :href => "/")
+    expect(page).to have_link("Gods", :href => "/gods/")
+    expect(page).to have_link("Monsters", :href => "/monsters/")
+  end
 end
