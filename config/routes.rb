@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/gods/:id/menagerie', to: 'gods#menagerie'
   
   get '/gods/new', to: 'gods#new'
-  get '/monsters/new', to: 'monsters#new'
+  get '/gods/:id/menagerie/new', to: 'monsters#new'
 
   post '/gods', to: 'gods#create'
   post '/monsters', to: 'monsters#create'
