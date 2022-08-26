@@ -15,7 +15,7 @@
   </div>
 
   <h1 style="text-align: center; padding: 30px"><%= @god.name %>'s Menagerie</h1>
-    <% @god.monsters.each do |monster| %>
+    <% @monsters.each do |monster| %>
     <div id= "monster_<%= monster.id %>">
       <h2><%= monster.name %></h2>
       <h3>Strength Rank: <%= monster.strength_rank %></h3>
