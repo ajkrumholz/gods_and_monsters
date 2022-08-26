@@ -15,12 +15,11 @@ class GodsController < ApplicationController
         immortal: params[:immortal]
       }
     )
-    # @god.save
     if @god.save
       redirect_to '/gods'
-    else
-      redirect_to '/gods/new'
-      @errors = @god.errors.messages
+    # else
+    #   redirect_to '/gods/new'
+    #   @errors = @god.errors.messages
     end
   end
   
@@ -43,16 +42,16 @@ class GodsController < ApplicationController
     )
     if @god.save
       redirect_to "/gods/#{@god.id}"
-    else
-      redirect_to "/gods/#{@god.id}/edit"
-      @errors = @god.errors.messages
+    # else
+    #   redirect_to "/gods/#{@god.id}/edit"
+    #   @errors = @god.errors.messages
     end
   end
 
-  def destroy
-    God.destroy(params[:id])
-    redirect_to '/gods'
-  end
+  # def destroy
+  #   God.destroy(params[:id])
+  #   redirect_to '/gods'
+  # end
 
   def menagerie
     @god = God.find(params[:id])

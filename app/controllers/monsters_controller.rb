@@ -22,9 +22,9 @@ class MonstersController < ApplicationController
     )
     if @monster.save
       redirect_to "/gods/#{@god.id}/menagerie"
-    else
-      redirect_to "/gods/#{@god.id}/menagerie/new"
-      @errors = @monster.errors.messages
+    # else
+    #   redirect_to "/gods/#{@god.id}/menagerie/new"
+    #   @errors = @monster.errors.messages
     end
   end
 
@@ -43,9 +43,9 @@ class MonstersController < ApplicationController
     )
     if @monster.save
       redirect_to "/monsters/#{@monster.id}"
-    else
-      redirect_to "/monsters/#{monster.id}/edit"
-      @errors = @monster.errors.messages
+    # else
+    #   redirect_to "/monsters/#{monster.id}/edit"
+    #   @errors = @monster.errors.messages
     end
   end
 end

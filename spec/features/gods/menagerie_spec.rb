@@ -14,8 +14,6 @@ RSpec.describe 'The Menagerie of a God' do
   describe "gods#menagerie" do 
 
     it 'shows all the monsters and their attributes associated with a specific god' do
-
-
       @monsters.each do |monster|
         within("#monster_#{monster.id}") do
           expect(page).to have_content(monster.name)
@@ -46,6 +44,14 @@ RSpec.describe 'The Menagerie of a God' do
 
     it 'has a link to create a new monster' do
       expect(page).to have_link("Summon New Monster", :href => "/gods/#{@khorne.id}/menagerie/new")
+    end
+
+    it 'has a link to update a created monster' do
+      @monsters.each do |monster|
+        within("#monster_#{monster.id}") do
+          expect(page).to have_link("Edit Monster", href: "/monsters/#{monster.id}/edit")
+        end
+      end
     end
   end
 end

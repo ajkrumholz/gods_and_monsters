@@ -33,34 +33,34 @@ RSpec.describe 'gods#new' do
     expect(page).to have_current_path("/gods")
   end
 
-  xit 'cannot create a god without name' do
-    visit "/gods/new/"
+  # xit 'cannot create a god without name' do
+  #   visit "/gods/new/"
 
-    fill_in(:age, with: '14')
-    choose(:immortal_true)
-    click_on("Create God")
-    expect(page).to have_current_path("/gods/new")
-  end
+  #   fill_in(:age, with: '14')
+  #   choose(:immortal_true)
+  #   click_on("Create God")
+  #   expect(page).to have_current_path("/gods/new")
+  # end
 
-  xit 'cannot create a god without age' do
-    visit "/gods/new/"
+  # xit 'cannot create a god without age' do
+  #   visit "/gods/new/"
 
-    fill_in(:name, with: 'Tzeentch')
-    choose(:immortal_true)
-    click_on("Create God")
+  #   fill_in(:name, with: 'Tzeentch')
+  #   choose(:immortal_true)
+  #   click_on("Create God")
     
-    expect(page).to have_current_path("/gods/new")
-  end
+  #   expect(page).to have_current_path("/gods/new")
+  # end
 
-  xit 'cannot create a god without immortal value' do
-    visit "/gods/new/"
+  # xit 'cannot create a god without immortal value' do
+  #   visit "/gods/new/"
 
-    fill_in(:name, with: 'Tzeentch')
-    fill_in(:age, with: '14')
-    click_on("Create God")
+  #   fill_in(:name, with: 'Tzeentch')
+  #   fill_in(:age, with: '14')
+  #   click_on("Create God")
     
-    expect(page).to have_current_path("/gods/new")
-  end
+  #   expect(page).to have_current_path("/gods/new")
+  # end
 
   it 'redirects to gods#index after creating' do
     visit "/gods/new/"

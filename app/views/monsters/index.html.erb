@@ -17,8 +17,11 @@
 <h1>All Monsters</h1>
 
 <% @monsters.each do |monster| %>
-  <% if monster.flying %>
-    <h2><a href="/monsters/<%= monster.id %>"><%= monster.name %></a></h2>
-  <% end %>
+  <div id="monster_<%= monster.id %>">
+    <% if monster.flying %>
+      <h2><a href="/monsters/<%= monster.id %>"><%= monster.name %></a></h2>
+      <p><%= link_to "Edit Monster", "/monsters/#{monster.id}/edit" %></p>
+    <% end %>
+  </div>
 <% end %>
 </body>

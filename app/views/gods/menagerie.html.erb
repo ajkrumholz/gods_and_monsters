@@ -22,6 +22,7 @@
       <h3>Flying: <%= monster.flying %></h3>
       <p>Created At: <%= monster.created_at %></p>
       <p>Updated At: <%= monster.updated_at %></p>
+      <p><%= link_to "Edit Monster", "/monsters/#{monster.id}/edit" %></p>
     </div>
     <% end %>
 
