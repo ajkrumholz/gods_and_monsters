@@ -1,0 +1,45 @@
+<head>
+
+  <%= stylesheet_link_tag "stylesheet" %>
+
+</head>
+
+<body>
+
+  <div>
+    <ul class="nav">
+      <li class="nav"><a class="nav" href="/">Home</a></li>
+      <li class="nav"><a class="nav active" href="/gods/">Gods</a></li>
+      <li class="nav"><a class="nav" href="/monsters/">Monsters</a></li>
+    </ul>
+  </div>
+
+  <h1> Make changes to <%= @monster.name %></h1>
+
+  <%= form_with url: "/monsters/#{@monster.id}", method: :patch do |f| %>
+    <div>
+      <p><%= f.label :name, "Name this Monster" %></p>
+      <%= f.text_field :name, required: true, value: @monster.name %>
+    </div>
+    <br><br>
+    <div>
+      <%= f.label :strength_rank, "Strength, between 0 (weak) and 10 (legendary)" %>
+      <%= f.number_field :strength_rank, min: 0, max: 10, step: 0.5, value: @monster.strength_rank %>
+    </div>
+    <br>
+    <div>
+      <p>Does your monster possess the gift of flight?</p>
+      <%= f.radio_button :flying, "true" %>
+      <%= f.label :flying_true, "It soars in the sky" %>
+      <br>
+      <%= f.radio_button :flying, "false" %>
+      <%= f.label :immortal_false, "It scrabbles in the dirt" %>
+    </div>
+  <br><br>
+
+    <div>
+      <%= f.submit "Update #{@monster.name}" %>
+    </div>
+  <% end %>
+
+</body>

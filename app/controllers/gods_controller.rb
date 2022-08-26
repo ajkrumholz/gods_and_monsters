@@ -41,8 +41,12 @@ class GodsController < ApplicationController
         immortal: params[:immortal]
       }
     )
-    @god.save
-    redirect_to "/gods/#{@god.id}"
+    if @god.save
+      redirect_to "/gods/#{@god.id}"
+    else
+      redirect_to "/gods/#{@god.id}/edit"
+      @errors = @god.errors.messages
+    end
   end
 
   def destroy
