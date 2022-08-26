@@ -56,5 +56,6 @@ class GodsController < ApplicationController
 
   def menagerie
     @god = God.find(params[:id])
+    @monsters = @god.monsters.order(:name)
   end
 end

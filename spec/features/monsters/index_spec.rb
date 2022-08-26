@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Monster Index Page' do
-  it 'displays the name of all monsters' do
+  it 'displays the name of all flying monsters' do
     khorne = God.create(name: "Khorne", age: 20, immortal: false)
     ursun = God.create(name: "Ursun", age: 20, immortal: false)
     slaanesh = God.create(name: "Slaanesh", age: 15, immortal: true)
@@ -15,9 +15,9 @@ RSpec.describe 'Monster Index Page' do
     visit '/monsters/'
 
     expect(page).to have_content(bloodthirster.name)
-    expect(page).to have_content(hellhound.name)
-    expect(page).to have_content(elemental_bear.name)
-    expect(page).to have_content(daemonette.name)
+    expect(page).not_to have_content(hellhound.name)
+    expect(page).not_to have_content(elemental_bear.name)
+    expect(page).not_to have_content(daemonette.name)
     expect(page).to have_content(daemon_priestess.name)
   end
 
