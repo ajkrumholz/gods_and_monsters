@@ -15,8 +15,8 @@ class GodsController < ApplicationController
         immortal: params[:immortal]
       }
     )
-    @god.save
-    if @god.save == true
+    # @god.save
+    if @god.save
       redirect_to '/gods'
     else
       redirect_to '/gods/new'
@@ -33,17 +33,16 @@ class GodsController < ApplicationController
   end
 
   def update
-    god = God.find(params[:id])
-    god.update(
+    @god = God.find(params[:id])
+    @god.update(
       {
-        name: params[:god][:name],
-        age: params[:god][:age],
-        immortal: params[:god][:immortal],
-        created_at: Date.today
+        name: params[:name],
+        age: params[:age],
+        immortal: params[:immortal]
       }
     )
-    god.save
-    redirect_to "/gods/#{god.id}"
+    @god.save
+    redirect_to "/gods/#{@god.id}"
   end
 
   def destroy

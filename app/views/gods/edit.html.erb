@@ -16,18 +16,35 @@
 
   <h1> Make changes to your God</h1>
 
-  <form action="/gods/<%= @god.id %>" method="post">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="hidden" name="_method" value="PATCH">
-    <p>Name this God:</p>
-    <input type='text' name='god[name]' value='<%= @god.name %>'><br>
-    <p>How old is this being? (millions of years)</p>
-    <input type='integer' name='god[age]' value='<%= @god.age %>'><br>
-    <p>Does your God suffer the frailty of mortality, or the curse of eternal life?</p>
-    <input type='radio' id='mortal' name='god[immortal]' value='0'>
-    <label for='false'>Mortal</label><br>
-    <input type='radio' id='immortal' name='god[immortal]' value='1'>
-    <label for='true'>Immortal</label><br><br>
-    <input type='submit'>
-  </form>
+  <%= form_with url: "/gods/#{@god.id}", method: :patch do |f| %>
+    <div>
+      <%= f.label :name, "Name this God" %><br><br>
+      <%= f.text_field :name, required: true, value: @god.name %><br><br>
+      <%# <% invalid = @god.errors.include?(:name) %>
+      <%# <% if invalid %>
+        <%# <div> %>
+          <%# <% god.errors.full_messages_for(:name).each do |msg| %>
+            <%# <%= msg %>
+          <%# <% end %>
+        <%# </div> %>
+      <%# <% end %>
+    </div>
+
+    <div>
+      <%= f.label :age, "How old is this being? (mil. of years)"%><br><br>
+      <%= f.number_field :age, value: @god.age, required: true %><br><br>
+    </div>
+
+    <div>
+      <p>Does your God suffer the frailty of mortality, or the curse of eternal life?</p>
+      <%= f.radio_button :immortal, "true" %>
+      <%= f.label :immortal_true, "Immortal" %>
+      <%= f.radio_button :immortal, "false" %>
+      <%= f.label :immortal_false, "Mortal" %><br><br>
+    </div>
+    
+    <div>
+      <%= f.submit "Update #{@god.name}" %>
+    </div>
+  <% end %>
 </body>
