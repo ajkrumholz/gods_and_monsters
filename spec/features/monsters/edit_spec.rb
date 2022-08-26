@@ -26,7 +26,7 @@ RSpec.describe "Monster Update Page" do
     fill_in(:strength_rank, with: "8.5")
     choose(:flying_true)
     click_on("Update #{@bloodthirster.name}")
-    @monster = @khorne.monsters.last
+    @monster = @khorne.monsters.order(:updated_at).last
 
     expect(@monster.name).to eq("Bloodthirster")
     expect(@monster.strength_rank).to eq(8.5)
