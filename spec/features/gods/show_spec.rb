@@ -14,7 +14,7 @@ RSpec.describe "Gods#Show" do
   end
 
   it 'shows the number of children for each god' do
-    khorne = God.create!(name: "Khorne", age: 20, immortal: false)
+    khorne = God.create(name: "Khorne", age: 20, immortal: false)
     bloodthirster = khorne.monsters.create!(name: "Bloodthirster", strength_rank: 8.5, flying: true)
     hellhound = khorne.monsters.create!(name: "Hellhound", strength_rank: 5.5, flying: false)
     
@@ -39,5 +39,16 @@ RSpec.describe "Gods#Show" do
     visit "/gods/#{khorne.id}/"
 
     expect(page).to have_link("View the Menagerie", :href => "/gods/#{khorne.id}/menagerie")
+  end
+
+  it 'links to the edit page' do
+    khorne = God.create(name: "Khorne", age: 20, immortal: false)
+
+    visit "/gods/#{khorne.id}/"
+
+    expect(page).to have_link("Update #{khorne.name}", :href => "/gods/#{khorne.id}/edit")
+
+    click_link("Update #{khorne.name}")
+    expect(page).to have_current_path("/gods/#{khorne.id}/edit")
   end
 end

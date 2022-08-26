@@ -33,7 +33,7 @@ RSpec.describe 'gods#new' do
     expect(page).to have_current_path("/gods")
   end
 
-  it 'cannot create a god without name' do
+  xit 'cannot create a god without name' do
     visit "/gods/new/"
 
     fill_in(:age, with: '14')
@@ -42,7 +42,7 @@ RSpec.describe 'gods#new' do
     expect(page).to have_current_path("/gods/new")
   end
 
-  it 'cannot create a god without age' do
+  xit 'cannot create a god without age' do
     visit "/gods/new/"
 
     fill_in(:name, with: 'Tzeentch')
@@ -52,7 +52,7 @@ RSpec.describe 'gods#new' do
     expect(page).to have_current_path("/gods/new")
   end
 
-  it 'cannot create a god without immortal value' do
+  xit 'cannot create a god without immortal value' do
     visit "/gods/new/"
 
     fill_in(:name, with: 'Tzeentch')
