@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe 'Monster update' do
   before(:each) do
     @khorne = God.create(name: "Khorne", age: 20, immortal: false)
-    visit "/gods/#{khorne.id}/edit"
+    visit "/gods/#{@khorne.id}/edit"
   end
-  
+
   it 'links to home, gods, and monsters' do
     expect(page).to have_link("Home", :href => "/")
     expect(page).to have_link("Gods", :href => "/gods/")

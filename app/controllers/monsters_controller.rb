@@ -27,4 +27,25 @@ class MonstersController < ApplicationController
       @errors = @monster.errors.messages
     end
   end
+
+  def edit
+    @monster = Monster.find(params[:id])
+  end
+
+  def update
+    @monster = Monster.find(params[:id])
+    @monster.update(
+      {
+        name: params[:name],
+        strength_rank: params[:strength_rank],
+        flying: params[:flying]
+      }
+    )
+    if @monster.save
+      redirect_to "/monsters/#{@monster.id}"
+    else
+      redirect_to "/monsters/#{monster.id}/edit"
+      @errors = @monster.errors.messages
+    end
+  end
 end

@@ -15,8 +15,11 @@ Rails.application.routes.draw do
   get '/monsters/:id', to: 'monsters#show'
 
   get '/gods/:id/edit', to: 'gods#edit'
+  get '/monsters/:id/edit', to: 'monsters#edit'
   
   patch '/gods/:id', to: 'gods#update'
+  patch '/monsters/:id', to: 'monsters#update'
+
   delete '/gods/:id', to: 'gods#destroy'
 end
 

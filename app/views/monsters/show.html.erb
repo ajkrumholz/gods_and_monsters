@@ -20,7 +20,9 @@
 <h3>God: <%= @monster.god.name %></h3>
 <h4>Strength Rank: <%= @monster.strength_rank %></h4>
 <h4>Flying: <%= @monster.flying %></h4>
+
+<h2><a href="/monsters/<%= @monster.id %>/edit">Update <%= @monster.name %></a></h2>
+
 <p>Created: <%= @monster.created_at %></p>
 <p>Updated: <%= @monster.updated_at %></p>
-
 </body>
