@@ -42,8 +42,13 @@ RSpec.describe "Gods#Show" do
 
     click_link "Delete #{@khorne.name}"
 
-    # expect(page).to have_current_path("/gods/")
-    # expect(page).to_not have_link("#{@khorne.name}", href: "/gods/#{@khorne.id}")
+    expect(page).to have_current_path("/gods")
+    expect(page).to_not have_link("#{@khorne.name}", href: "/gods/#{@khorne.id}")
+
+    visit("/monsters")
+
+    expect(page).to_not have_link("#{@bloodthirster.name}", href: "/monsters/#{@bloodthirster.id}")
+
   end
     
 end

@@ -50,8 +50,8 @@ class GodsController < ApplicationController
 
   def destroy
     @god = God.find(params[:id])
-    @god.monsters.delete_all
-    @god.delete
+    @god.monsters.destroy_all
+    @god.destroy
     redirect_to '/gods'
   end
 
