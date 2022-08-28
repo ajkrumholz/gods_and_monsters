@@ -48,10 +48,12 @@ class GodsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   God.destroy(params[:id])
-  #   redirect_to '/gods'
-  # end
+  def destroy
+    @god = God.find(params[:id])
+    @god.monsters.destroy_all
+    @god.destroy
+    redirect_to '/gods'
+  end
 
   def menagerie
     @god = God.find(params[:id])
