@@ -13,4 +13,3 @@ bloodthirster = khorne.monsters.create!(name: "Bloodthirster", strength_rank: 8.
 hellhound = khorne.monsters.create!(name: "Hellhound", strength_rank: 5.5, flying: false)
 elemental_bear = ursun.monsters.create!(name: "Elemental Bear", strength_rank: 7.0, flying: false)
 daemonette = slaanesh.monsters.create!(name: "Daemonette", strength_rank: 3.5, flying: false)
-daemon_priestess = slaanesh.monsters.create!(name: "Daemon Priestess", strength_rank: 9.0, flying: true)
