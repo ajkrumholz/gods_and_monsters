@@ -28,4 +28,13 @@ RSpec.describe "Monsters Show Page" do
   it 'links to monsters#edit' do
     expect(page).to have_link("Update #{@bloodthirster.name}", :href => "/monsters/#{@bloodthirster.id}/edit")
   end
+
+  it 'links to monster#destroy' do
+    expect(page).to have_link("Delete #{@bloodthirster.name}", href: "/monsters/#{@bloodthirster.id}")
+
+    click_link("Delete #{@bloodthirster.name}")
+
+    expect(page).to have_current_path("/monsters")
+    expect(page).to_not have_link("#{@bloodthirster.name}", href: "/monsters/#{@bloodthirster.id}")
+  end
 end

@@ -16,11 +16,13 @@ RSpec.describe 'Monster Index Page' do
     end
 
     it 'displays the name of all flying monsters' do
-      expect(page).to have_content(@bloodthirster.name)
-      expect(page).not_to have_content(@hellhound.name)
-      expect(page).not_to have_content(@elemental_bear.name)
-      expect(page).not_to have_content(@daemonette.name)
-      expect(page).to have_content(@daemon_priestess.name)
+      within("div#winged") do
+        expect(page).to have_content(@bloodthirster.name)
+        expect(page).not_to have_content(@hellhound.name)
+        expect(page).not_to have_content(@elemental_bear.name)
+        expect(page).not_to have_content(@daemonette.name)
+        expect(page).to have_content(@daemon_priestess.name)
+      end
     end
 
     it 'links to home, gods, and monsters' do
@@ -29,13 +31,11 @@ RSpec.describe 'Monster Index Page' do
       expect(page).to have_link("Monsters", :href => "/monsters/")
     end
 
-    it 'links to edit page for each monster' do
-      @monsters.each do |monster|
-        if monster.flying?
-          within("#monster_#{monster.id}") do
-            expect(page).to have_link("Edit Monster", href: "/monsters/#{monster.id}/edit")
-          end
-        end
+    it 'links to edit page for each flying monster in correct column' do
+      within("div#winged") do
+        expect(page).to have_link("Edit Monster", href: "/monsters/#{@bloodthirster.id}/edit")
+        expect(page).to have_link("Edit Monster", href: "/monsters/#{@daemon_priestess.id}/edit")
+        expect(page).not_to have_link("Edit Monster", href: "/monsters/#{@elemental_bear.id}/edit")
       end
     end
   end

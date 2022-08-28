@@ -48,4 +48,10 @@ class MonstersController < ApplicationController
     #   @errors = @monster.errors.messages
     end
   end
+
+  def destroy
+    @monster = Monster.find(params[:id])
+    @monster.destroy
+    redirect_to "/monsters"
+  end
 end

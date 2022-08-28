@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   patch '/monsters/:id', to: 'monsters#update'
 
   delete '/gods/:id', to: 'gods#destroy'
+  delete '/monsters/:id', to: 'monsters#destroy'
 end
 
