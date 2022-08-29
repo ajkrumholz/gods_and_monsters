@@ -15,7 +15,16 @@
   </div>
 
   <h1 style="text-align: center; padding: 30px"><%= @god.name %>'s Menagerie</h1>
-    <% @monsters.each do |monster| %>
+
+  <p><%= form_with url: "/gods/#{@god.id}/menagerie?min_strength_rank=0", local: true, method: :get do |f| %></p>
+
+    <p><%= f.label :min_strength_rank, "Select a minimum strength rank for displayed monsters" %>
+    <%= f.number_field :min_strength_rank, in: 0.0..10.0, step: 0.5%></p>
+    <p><%= f.submit "Update Display" %></p>
+  <% end %>
+
+  <% @monsters.each do |monster| %>
+
     <div id= "monster_<%= monster.id %>">
       <h2><%= monster.name %></h2>
       <h3>Strength Rank: <%= monster.strength_rank %></h3>
@@ -24,6 +33,7 @@
       <p>Updated At: <%= monster.updated_at %></p>
       <p><%= link_to "Edit Monster", "/monsters/#{monster.id}/edit" %></p>
     </div>
-    <% end %>
+
+  <% end %>
 
   <h2><a href="/gods/<%= @god.id %>/menagerie/new">Summon New Monster</a></h2>
