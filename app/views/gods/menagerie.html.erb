@@ -32,6 +32,7 @@
       <p>Created At: <%= monster.created_at %></p>
       <p>Updated At: <%= monster.updated_at %></p>
       <p><%= link_to "Edit Monster", "/monsters/#{monster.id}/edit" %></p>
+      <%= link_to "Delete #{monster.name}", "/monsters/#{monster.id}", method: :delete %>
     </div>
 
   <% end %>

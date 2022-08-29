@@ -65,5 +65,14 @@ RSpec.describe 'The Menagerie of a God' do
       expect(page).to have_content(@skullcrusher.name)
       expect(page).not_to have_content(@hellhound.name)
     end
+
+    it 'has a link to delete a monster from the menagerie' do
+      expect(page).to have_link("Delete #{@bloodthirster.name}")
+
+      click_link("Delete Bloodthirster")
+
+      expect(current_path).to eq("/monsters")
+      expect(page).not_to have_content("Bloodthirster")
+    end
   end
 end
