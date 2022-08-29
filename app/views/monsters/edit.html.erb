@@ -16,7 +16,7 @@
 
   <h1> Make changes to <%= @monster.name %></h1>
 
-  <%= form_with url: "/monsters/#{@monster.id}", method: :patch do |f| %>
+  <%= form_with url: "/monsters/#{@monster.id}", method: :patch, local: :true do |f| %>
     <div>
       <p><%= f.label :name, "Name this Monster" %></p>
       <%= f.text_field :name, required: true, value: @monster.name %>

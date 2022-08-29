@@ -16,7 +16,7 @@
 
   <h1 style="text-align: center; padding: 30px"><%= @god.name %>'s Menagerie</h1>
 
-  <p><%= form_with url: "/gods/#{@god.id}/menagerie?min_strength_rank=0", local: true, method: :get do |f| %></p>
+  <p><%= form_with url: "/gods/#{@god.id}/menagerie?min_strength_rank=0", local: :true, method: :get do |f| %></p>
 
     <p><%= f.label :min_strength_rank, "Select a minimum strength rank for displayed monsters" %>
     <%= f.number_field :min_strength_rank, in: 0.0..10.0, step: 0.5%></p>

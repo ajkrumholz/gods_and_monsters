@@ -16,7 +16,7 @@
 
   <h1> Make changes to your God</h1>
 
-  <%= form_with url: "/gods/#{@god.id}", method: :patch do |f| %>
+  <%= form_with url: "/gods/#{@god.id}", method: :patch, local: :true do |f| %>
     <div>
       <%= f.label :name, "Name this God" %><br><br>
       <%= f.text_field :name, required: true, value: @god.name %><br><br>
