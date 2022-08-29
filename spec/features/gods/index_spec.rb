@@ -6,6 +6,15 @@ RSpec.describe 'God Index Page' do
     @ursun = God.create(name: "Ursun", age: 20, immortal: false)
     @slaanesh = God.create(name: "Slaanesh", age: 15, immortal: true)
 
+    @bloodthirster = @khorne.monsters.create!(name: "Bloodthirster", strength_rank: 9.0, flying: true)
+
+    @elemental_bear = @ursun.monsters.create!(name: "Elemental Bear", strength_rank: 8.5, flying: false)
+    @ice_leopard = @ursun.monsters.create!(name: "Ice Leopard", strength_rank: 4.0, flying: false)
+    @little_grom = @ursun.monsters.create!(name: "Little Grom", strength_rank: 6.5, flying: false)
+
+    @daemon_priestess = @slaanesh.monsters.create!(name: "Daemon Priestess", strength_rank: 9.0, flying: true)
+    @soul_grinder = @slaanesh.monsters.create!(name: "Soul Grinder", strength_rank: 8.5, flying: false)
+
     visit "/gods"
   end
 
@@ -43,5 +52,16 @@ RSpec.describe 'God Index Page' do
     end
     expect(current_path).to eq("/gods")
     expect(page).to_not have_link("Khorne")
+  end
+
+  describe 'has a link to sort gods by number of monsters' do
+    it 'displays and sorts by monster count' do
+      expect(page).to have_link("Sort by number of monsters")
+
+      click_link("Sort by number of monsters")
+
+      expect("Ursun").to appear_before("Slaanesh")
+      expect("Slaanesh").to appear_before("Khorne")
+    end
   end
 end

@@ -1,40 +1,37 @@
 require 'rails_helper'
 
 RSpec.describe God do
-  let(:khorne) { God.create(name: "Khorne", age: 20, immortal: true)}
-  
-  it 'exists' do
-    expect(khorne).to be_a(God)
+  before(:each) do
+    @khorne = God.create(name: "Khorne", age: 40, immortal: true)
+    @ursun = God.create(name: "Ursun", age: 20, immortal: false)
+    @slaanesh = God.create(name: "Slaanesh", age: 15, immortal: true)
+
+    @bloodthirster = @khorne.monsters.create!(name: "Bloodthirster", strength_rank: 9.0, flying: true)
+
+    @elemental_bear = @ursun.monsters.create!(name: "Elemental Bear", strength_rank: 8.5, flying: false)
+    @ice_leopard = @ursun.monsters.create!(name: "Ice Leopard", strength_rank: 4.0, flying: false)
+    @little_grom = @ursun.monsters.create!(name: "Little Grom", strength_rank: 6.5, flying: false)
+
+    @daemonette = @slaanesh.monsters.create!(name: "Daemonette", strength_rank: 3.5, flying: false)
+    @daemon_priestess = @slaanesh.monsters.create!(name: "Daemon Priestess", strength_rank: 9.0, flying: true)
   end
 
-  it 'has no monsters by default' do
-    expect(khorne.monsters).to eq([])
+  it 'sorts Gods by number of monsters' do
+    expect(God.sort_by_monsters).to eq([@ursun, @slaanesh, @khorne])
   end
 
-  it 'has a name' do
-    expect(khorne.name).to eq("Khorne")
-  end
+  # it 'can have monsters' do
+  #   bloodthirster = khorne.monsters.create!(name: "Bloodthirster", strength_rank: 8.5, flying: true)
+  #   hellhound = khorne.monsters.create!(name: "Hellhound", strength_rank: 5.5, flying: false)
 
-  it 'has an age' do
-    expect(khorne.age).to be(20)
-  end
+  #   expect(bloodthirster).to be_a(Monster)
+  #   expect(khorne.monsters).to eq([bloodthirster, hellhound])
+  # end
 
-  it 'can be immortal' do
-    expect(khorne.immortal).to be(true)
-  end
+  # it 'can count monsters' do
+  #   bloodthirster = khorne.monsters.create!(name: "Bloodthirster", strength_rank: 8.5, flying: true)
+  #   hellhound = khorne.monsters.create!(name: "Hellhound", strength_rank: 5.5, flying: false)
 
-  it 'can have monsters' do
-    bloodthirster = khorne.monsters.create!(name: "Bloodthirster", strength_rank: 8.5, flying: true)
-    hellhound = khorne.monsters.create!(name: "Hellhound", strength_rank: 5.5, flying: false)
-
-    expect(bloodthirster).to be_a(Monster)
-    expect(khorne.monsters).to eq([bloodthirster, hellhound])
-  end
-
-  it 'can count monsters' do
-    bloodthirster = khorne.monsters.create!(name: "Bloodthirster", strength_rank: 8.5, flying: true)
-    hellhound = khorne.monsters.create!(name: "Hellhound", strength_rank: 5.5, flying: false)
-
-    expect(khorne.monsters.count).to eq(2)
-  end
+  #   expect(khorne.monsters.count).to eq(2)
+  # end
 end

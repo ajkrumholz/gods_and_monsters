@@ -1,6 +1,10 @@
 class GodsController < ApplicationController
   def index
-    @gods = God.all.order(created_at: :desc)
+    if params[:sort_by_monsters]
+      @gods = God.sort_by_monsters
+    else
+      @gods = God.all.order(created_at: :desc)
+    end
   end
   
   def new
@@ -57,22 +61,8 @@ class GodsController < ApplicationController
 
   def menagerie
     @god = God.find(params[:id])
-    if params[:min_strength_rank] != nil
-      @min_strength_rank = params[:min_strength_rank]
-    else
-      @min_strength_rank = 0
-    end
-    @monsters = @god.monsters.where("strength_rank >= #{@min_strength_rank}").order(:name)
+    @min_strength_rank = params[:min_strength_rank]
+    @monsters = @god.monsters
+    @monsters = @monsters.display_by_str(@god, @min_strength_rank)
   end
-
-  # def update_strength_rank
-  #   @god = God.find(params[:id])
-  #   if params[:min_strength_rank] != nil
-  #     @min_strength_rank = params[:min_strength_rank]
-  #   else
-  #     @min_strength_rank = 0
-  #   end
-  #   @monsters = @god.monsters.where("strength_rank >= #{@min_strength_rank}").order(:name)
-  #   redirect_to "/gods/#{@god.id}/menagerie"
-  # end
 end

@@ -16,6 +16,7 @@
 
   <h1 style="text-align: center; padding: 30px">All Gods</h1>
   <h2><a href='/gods/new/'>Recognize a new God</a></h2>
+  <%= link_to "Sort by number of monsters", "/gods?sort_by_monsters=true", method: :get %>
   <ul>
     <% @gods.each do |god| %>
       <div id="god_<%= god.id %>">
