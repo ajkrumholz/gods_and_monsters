@@ -57,6 +57,22 @@ class GodsController < ApplicationController
 
   def menagerie
     @god = God.find(params[:id])
-    @monsters = @god.monsters.order(:name)
+    if params[:min_strength_rank] != nil
+      @min_strength_rank = params[:min_strength_rank]
+    else
+      @min_strength_rank = 0
+    end
+    @monsters = @god.monsters.where("strength_rank >= #{@min_strength_rank}").order(:name)
   end
+
+  # def update_strength_rank
+  #   @god = God.find(params[:id])
+  #   if params[:min_strength_rank] != nil
+  #     @min_strength_rank = params[:min_strength_rank]
+  #   else
+  #     @min_strength_rank = 0
+  #   end
+  #   @monsters = @god.monsters.where("strength_rank >= #{@min_strength_rank}").order(:name)
+  #   redirect_to "/gods/#{@god.id}/menagerie"
+  # end
 end

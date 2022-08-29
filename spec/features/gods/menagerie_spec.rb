@@ -53,5 +53,17 @@ RSpec.describe 'The Menagerie of a God' do
         end
       end
     end
+
+    it 'has a form to display only monsters above a given strength ranking' do
+      expect(page).to have_field("min_strength_rank")
+      expect(page).to have_button("Update Display")
+
+      fill_in("min_strength_rank", with: 6.0)
+      click_button("Update Display")
+      
+      expect(page).to have_content(@bloodthirster.name)
+      expect(page).to have_content(@skullcrusher.name)
+      expect(page).not_to have_content(@hellhound.name)
+    end
   end
 end
