@@ -16,7 +16,7 @@
   
   <h1>Spawn a New Monster</h1>
   <br>
-  <%= form_with url: "/monsters", method: :post do |f| %>
+  <%= form_with url: "/monsters", method: :post, local: :true do |f| %>
     <div>
       <p><%= f.label :name, "Name this Monster" %></p>
       <%= f.text_field :name, required: true %>

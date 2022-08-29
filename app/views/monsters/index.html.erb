@@ -23,6 +23,7 @@
         <% if monster.flying %>
           <h2><a href="/monsters/<%= monster.id %>"><%= monster.name %></a></h2>
           <p><%= link_to "Edit Monster", "/monsters/#{monster.id}/edit" %></p>
+          <%= link_to "Delete #{monster.name}", "/monsters/#{monster.id}", method: :delete %>
         <% end %>
       </div>
     <% end %>
@@ -36,6 +37,7 @@
         <% if !monster.flying %>
           <h2><a href="/monsters/<%= monster.id %>"><%= monster.name %></a></h2>
           <p><%= link_to "Edit Monster", "/monsters/#{monster.id}/edit" %></p>
+            <%= link_to "Delete #{monster.name}", "/monsters/#{monster.id}", method: :delete %>
         <% end %>
       </div>
     <% end %>

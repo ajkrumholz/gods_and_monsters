@@ -14,7 +14,7 @@
   </div>
 
   <h1>Recognize a new God</h1>
-  <%= form_with url: "/gods", method: :post do |f| %>
+  <%= form_with url: "/gods", method: :post, local: :true do |f| %>
     <div>
       <%= f.label :name, "Name this God" %><br><br>
       <%= f.text_field :name, required: true %><br><br>

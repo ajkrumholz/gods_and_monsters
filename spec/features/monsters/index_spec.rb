@@ -38,5 +38,17 @@ RSpec.describe 'Monster Index Page' do
         expect(page).not_to have_link("Edit Monster", href: "/monsters/#{@elemental_bear.id}/edit")
       end
     end
+    
+    it 'has a link to delete each winged monster' do
+      within("div#winged") do
+        expect(page).to have_link("Delete #{@bloodthirster.name}")
+
+        click_link("Delete #{@bloodthirster.name}")
+
+        expect(current_path).to eq("/monsters")
+        expect(page).to_not have_content("#{@bloodthirster.name}")
+      end
+
+    end
   end
 end

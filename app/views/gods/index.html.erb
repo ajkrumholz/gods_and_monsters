@@ -18,9 +18,10 @@
   <h2><a href='/gods/new/'>Recognize a new God</a></h2>
   <ul>
     <% @gods.each do |god| %>
-      <div id="god.<%= god.id %>">
+      <div id="god_<%= god.id %>">
         <h2><a href='/gods/<%= god.id %>'><%= god.name %></a></h2>
-        <p><a href="/gods/<%= god.id %>/edit">Edit</a></p>
+        <p><a href="/gods/<%= god.id %>/edit"><%= "Edit #{god.name}" %></a></p>
+        <p><%= link_to "Delete", "/gods/#{god.id}", method: 'delete' %></p>
       </div>
     <% end %>
   </ul>
