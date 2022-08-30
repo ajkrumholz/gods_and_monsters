@@ -26,13 +26,16 @@ RSpec.describe 'The Menagerie of a God' do
     end
     
     describe 'alphabetical sort order' do
-      it 'shows all of the menagerie in alphabetical order' do
-        blo = "Bloodthirster"
-        hel = "Hellhound"
-        skul = "Skullcrusher"
+      it 'has a link to sort in alphabetical order' do
+        expect(page).to have_link("Sort Alphabetically")
 
-        expect(blo).to appear_before(hel)
-        expect(hel).to appear_before(skul)
+        expect("Skullcrusher").to appear_before("Bloodthirster")
+        expect("Bloodthirster").to appear_before("Hellhound")
+
+        click_link("Sort Alphabetically")
+
+        expect("Bloodthirster").to appear_before("Hellhound")
+        expect("Hellhound").to appear_before("Skullcrusher")
       end
     end
 
