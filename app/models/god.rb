@@ -1,6 +1,6 @@
 class God < ApplicationRecord
-  # validates :name, :age, presence: true
-  # validates :name, uniqueness: true
+  validates :name, :age, presence: true
+  validates :immortal, inclusion: { in: [true, false] }
   has_many :monsters
 
   def self.sort_by_monsters
