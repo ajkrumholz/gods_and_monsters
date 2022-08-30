@@ -33,4 +33,13 @@ RSpec.describe "Monster Update Page" do
     expect(@monster.flying).to eq(true)
     expect(page).to have_current_path("/monsters/#{@monster.id}")
   end
+
+  it 'will not update if all attributes are not present' do
+    fill_in(:name, with: "Bloodthirster")
+    fill_in(:strength_rank, with: "8.5")
+
+    click_on("Update #{@bloodthirster.name}")
+
+    expect(page).to have_content("Please make a selection")
+  end
 end

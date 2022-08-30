@@ -38,6 +38,14 @@ RSpec.describe "Creation of a God's monster" do
         expect(@monster.god).to be(@khorne)
         expect(page).to have_current_path("/gods/#{@khorne.id}/menagerie")
       end
+
+      it 'cannot create a monster that is missing attributes' do
+        fill_in(:name, with: "Bloodthirster")
+        fill_in(:strength_rank, with: "9.5")
+        click_on("Create Monster")
+
+        expect(page).to have_content("Please make a selection")
+      end
     end
   end
 end

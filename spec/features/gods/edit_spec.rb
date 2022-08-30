@@ -32,4 +32,12 @@ RSpec.describe 'Monster update' do
     expect(@god.immortal).to eq(false)
     expect(page).to have_current_path("/gods/#{@khorne.id}")
   end
+
+  it 'cannot update a god if attributes are missing' do
+    fill_in(:name, with: 'Khorne')
+    fill_in(:age, with: '21')
+    click_on("Update #{@khorne.name}")
+
+    expect(page).to have_content("Please make a selection")
+  end
 end

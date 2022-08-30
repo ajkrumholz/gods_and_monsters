@@ -16,7 +16,7 @@ class MonstersController < ApplicationController
 
   def create
     @god = God.find(params[:god_id])
-    @monster = @god.monsters.create!(
+    @monster = @god.monsters.create(
       {
         name: params[:name],
         strength_rank: params[:strength_rank],
@@ -38,16 +38,16 @@ class MonstersController < ApplicationController
   end
 
   def update
-    @monster = Monster.find(params[:id])
-    @monster.update!(
+    monster = Monster.find(params[:id])
+    monster.update(
       {
         name: params[:name],
         strength_rank: params[:strength_rank],
         flying: params[:flying]
       }
     )
-    if @monster.save
-      redirect_to "/monsters/#{@monster.id}"
+    if monster.save
+      redirect_to "/monsters/#{monster.id}"
     else
       redirect_to "/monsters/#{monster.id}/edit?check=1"
     end
