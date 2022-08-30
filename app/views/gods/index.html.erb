@@ -14,13 +14,17 @@
     </ul>
   </div>
 
-  <h1 style="text-align: center; padding: 30px">All Gods</h1>
-  <h2><a href='/gods/new/'>Recognize a new God</a></h2>
-  <%= link_to "Sort by number of monsters", "/gods?sort_by_monsters=true", method: :get %>
+  <div style="text-align: center; padding: 30px">
+    <h1>All Gods</h1>
+    <h2><a href='/gods/new/'>Recognize a new God</a></h2>
+    <%= link_to "Sort by number of monsters", "/gods?sort_by_monsters=true", method: :get %>
+  </div>
+  
   <ul>
     <% @gods.each do |god| %>
       <div id="god_<%= god.id %>">
         <h2><a href='/gods/<%= god.id %>'><%= god.name %></a></h2>
+        <%= "Number of monsters: #{god.monsters.count}" %>
         <p><a href="/gods/<%= god.id %>/edit"><%= "Edit #{god.name}" %></a></p>
         <p><%= link_to "Delete", "/gods/#{god.id}", method: 'delete' %></p>
       </div>

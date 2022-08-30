@@ -62,6 +62,9 @@ RSpec.describe 'God Index Page' do
 
       expect("Ursun").to appear_before("Slaanesh")
       expect("Slaanesh").to appear_before("Khorne")
+      expect(page).to have_content("#{@khorne.monsters.count}")
+      expect(page).to have_content("#{@ursun.monsters.count}")
+      expect(page).to have_content("#{@slaanesh.monsters.count}")
     end
   end
 end
