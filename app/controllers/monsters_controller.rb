@@ -5,6 +5,9 @@ class MonstersController < ApplicationController
 
   def new
     @god = God.find(params[:id])
+    if params[:check]
+      @radio_msg = "Please make a selection"
+    end
   end
 
   def show
@@ -13,7 +16,7 @@ class MonstersController < ApplicationController
 
   def create
     @god = God.find(params[:god_id])
-    @monster = @god.monsters.new(
+    @monster = @god.monsters.create!(
       {
         name: params[:name],
         strength_rank: params[:strength_rank],
@@ -22,19 +25,21 @@ class MonstersController < ApplicationController
     )
     if @monster.save
       redirect_to "/gods/#{@god.id}/menagerie"
-    # else
-    #   redirect_to "/gods/#{@god.id}/menagerie/new"
-    #   @errors = @monster.errors.messages
+    else
+      redirect_to "/gods/#{@god.id}/menagerie/new?check=1"
     end
   end
 
   def edit
     @monster = Monster.find(params[:id])
+    if params[:check]
+      @radio_msg = "Please make a selection"
+    end
   end
 
   def update
     @monster = Monster.find(params[:id])
-    @monster.update(
+    @monster.update!(
       {
         name: params[:name],
         strength_rank: params[:strength_rank],
@@ -43,9 +48,8 @@ class MonstersController < ApplicationController
     )
     if @monster.save
       redirect_to "/monsters/#{@monster.id}"
-    # else
-    #   redirect_to "/monsters/#{monster.id}/edit"
-    #   @errors = @monster.errors.messages
+    else
+      redirect_to "/monsters/#{monster.id}/edit?check=1"
     end
   end
 

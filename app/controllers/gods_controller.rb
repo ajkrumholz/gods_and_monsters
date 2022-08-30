@@ -8,7 +8,9 @@ class GodsController < ApplicationController
   end
   
   def new
-    
+    if params[:check]
+      @radio_msg = "Please make a selection"
+    end
   end
   
   def create
@@ -21,9 +23,8 @@ class GodsController < ApplicationController
     )
     if @god.save
       redirect_to '/gods'
-    # else
-    #   redirect_to '/gods/new'
-    #   @errors = @god.errors.messages
+    else
+      redirect_to '/gods/new?check=1'
     end
   end
   
@@ -33,6 +34,9 @@ class GodsController < ApplicationController
 
   def edit
     @god = God.find(params[:id])
+    if params[:check]
+      @radio_msg = "Please make a selection"
+    end
   end
 
   def update
@@ -46,9 +50,8 @@ class GodsController < ApplicationController
     )
     if @god.save
       redirect_to "/gods/#{@god.id}"
-    # else
-    #   redirect_to "/gods/#{@god.id}/edit"
-    #   @errors = @god.errors.messages
+    else
+      redirect_to "/gods/#{@god.id}/edit?check=1"
     end
   end
 

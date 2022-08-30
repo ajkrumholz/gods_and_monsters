@@ -15,17 +15,11 @@
 
   <h1>Recognize a new God</h1>
   <%= form_with url: "/gods", method: :post, local: :true do |f| %>
+    
     <div>
       <%= f.label :name, "Name this God" %><br><br>
       <%= f.text_field :name, required: true %><br><br>
-      <%# <% invalid = @god.errors.include?(:name) %>
-      <%# <% if invalid %>
-        <%# <div> %>
-          <%# <% god.errors.full_messages_for(:name).each do |msg| %>
-            <%# <%= msg %>
-          <%# <% end %>
-        <%# </div> %>
-      <%# <% end %>
+
     </div>
 
     <div>
@@ -38,7 +32,8 @@
       <%= f.radio_button :immortal, "true" %>
       <%= f.label :immortal_true, "Immortal" %>
       <%= f.radio_button :immortal, "false" %>
-      <%= f.label :immortal_false, "Mortal" %><br><br>
+      <%= f.label :immortal_false, "Mortal" %>
+      <p><%= @radio_msg %></p>
     </div>
     
     <div>
